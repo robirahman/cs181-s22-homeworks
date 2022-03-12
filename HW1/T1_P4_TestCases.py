@@ -29,29 +29,29 @@ w_d = [ 1.23650309e+05,  1.02356914e+00,  1.32627256e+02, -5.56954926e+03,
        -7.81371162e+04, -1.09949648e+05, -1.35043025e+05, -1.54227879e+05,
        -1.68128359e+05, -1.77586744e+05]
 
-for part in ['a','d']:
-    X = make_basis(test_x,part) 
+for part in ['a', 'd']:
+    X = make_basis(test_x, part)
     if part == 'a':
-        if X.shape != (24,6):
+        if X.shape != (24, 6):
             print("For part a, your X is the wrong shape. Shape should be (24,6) and you have ", X.shape)
     elif part == 'd':
-        if X.shape != (24,26):
+        if X.shape != (24, 26):
             print("For part d, your X is the wrong shape. Shape should be (24,26) and you have ", X.shape)
-    w = find_weights(X,test_y)
+    w = find_weights(X, test_y)
     if part == 'a':
-        if len(w_a)!=len(w):
+        if len(w_a) != len(w):
             print("Your weights for part a have the wrong shape. Length should be ", len(w_a), " and you have ", len(w))
         else:
-            parta_checker = np.array_equal(np.around(w_a,-1),np.around(w,-1))
+            parta_checker = np.array_equal(np.around(w_a, -1), np.around(w, -1))
             if parta_checker:
                 parta_checker = "Pass"
             else:
                 parta_checker = "Fail"
     elif part == 'd':
-        if len(w_d)!=len(w):
+        if len(w_d) != len(w):
             print("Your weights for part d have the wrong shape. Length should be ", len(w_d), " and you have ", len(w))
         else:
-            partd_checker = np.array_equal(np.around(w_d,-1),np.around(w,-1))
+            partd_checker = np.array_equal(np.around(w_d, -1), np.around(w, -1))
             if partd_checker:
                 partd_checker = "Pass"
             else:

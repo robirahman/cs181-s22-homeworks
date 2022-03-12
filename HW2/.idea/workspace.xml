@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="42135a5c-62a2-4be6-9aba-80efcde59c3d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../HW1/.idea/HW1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/41a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/41b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/41c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/41d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/42a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/42c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/42d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/CS_181_Homework_1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/T1_P1_plot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/k1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/k2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/k3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/k4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/k5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW1/k6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/HW2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CS_181_Homework_2.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Q12-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Q12-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Q12-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Q14-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Q14-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Q14-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generative_result_separate_covariances.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generative_result_shared_covariances.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/knn1_result.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/knn3_result.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/knn5_result.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logistic_regression_classification.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logistic_regression_loss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logistic_regression_result with penalty.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/T1_P1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/T1_P1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/T1_P2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/T1_P2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/T1_P2_TestCases.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/T1_P2_TestCases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/T1_P4.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/T1_P4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/T1_P4_TestCases.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/T1_P4_TestCases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/homework1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW1/homework1.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../HW1/homework1.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/T2_P1.py" beforeDir="false" afterPath="$PROJECT_DIR$/T2_P1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/T2_P3.py" beforeDir="false" afterPath="$PROJECT_DIR$/T2_P3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/T2_P3_GaussianGenerativeModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/T2_P3_GaussianGenerativeModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/T2_P3_KNNModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/T2_P3_KNNModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/T2_P3_LogisticRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/T2_P3_LogisticRegression.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="25eaL8G0OFd3f94SkUycYyOOTqN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RunManager" selected="Python.T2_P3">
+    <configuration name="T2_P1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HW2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/T2_P1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="T2_P3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HW2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/T2_P3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="T2_P3_LogisticRegression" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HW2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/T2_P3_LogisticRegression.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.T2_P3" />
+        <item itemvalue="Python.T2_P3_LogisticRegression" />
+        <item itemvalue="Python.T2_P1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42135a5c-62a2-4be6-9aba-80efcde59c3d" name="Changes" comment="" />
+      <created>1645889946696</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645889946696</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

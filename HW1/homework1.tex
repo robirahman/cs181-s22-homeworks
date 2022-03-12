@@ -21,6 +21,8 @@
 
 \usepackage[mmddyyyy,hhmmss]{datetime}
 
+\graphicspath{ {./images/} }
+
 \definecolor{verbgray}{gray}{0.9}
 
 \lstnewenvironment{csv}{
@@ -35,43 +37,6 @@
 \begin{center}
 {\Large Homework 1: Regression}\\
 \end{center}
-
-\subsection*{Introduction}
-This homework is on different forms of linear regression and focuses
-on loss functions, optimizers, and regularization. Linear regression
-will be one of the few models that we see that has an analytical
-solution.  These problems focus on deriving these solutions and
-exploring their properties.
-
-If you find that you are having trouble with the first couple
-problems, we recommend going over the fundamentals of linear algebra
-and matrix calculus (see links on website).  The relevant parts of the
-\href{https://github.com/harvard-ml-courses/cs181-textbook/blob/master/Textbook.pdf}{cs181-textbook notes are Sections 2.1 - 2.7}.  We strongly recommend
-reading the textbook before beginning the homework.
-
-    We also encourage you to first read the \href{http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop\%20-\%20Pattern\%20Recognition\%20And\%20Machine\%20Learning\%20-\%20Springer\%20\%202006.pdf}{Bishop textbook}, particularly:
-Section 2.3 (Properties of Gaussian Distributions), Section 3.1
-(Linear Basis Regression), and Section 3.3 (Bayesian Linear
-Regression). (Note that our notation is slightly different but the
-underlying mathematics remains the same!).
-
-\textbf{Please type your solutions after the corresponding problems using this
-\LaTeX\ template, and start each problem on a new page.} You may find
-the following introductory resources on \LaTeX\ useful: 
-\href{http://www.mjdenny.com/workshops/LaTeX_Intro.pdf}{\LaTeX\ Basics} 
-and \href{https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1)}{\LaTeX\ tutorial with exercises in Overleaf}
-
-Homeworks will be submitted through Gradescope. You will be added to
-the course Gradescope once you join the course Canvas page. If you
-haven't received an invitation, contact the course staff through Ed.
-
-\textbf{Please submit the writeup PDF to the Gradescope assignment
-  `HW1'.} Remember to assign pages for each question.
-
-\textbf{Please submit your \LaTeX file and code files to the
-  Gradescope assignment `HW1 - Supplemental'.} Your files should be
-named in the same way as we provide them in the repository,
-e.g. \texttt{T1\_P1.py}, etc.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,22 +72,8 @@ should be.
   we are interested in minimizing the residual sum of squares.  Write
   down this loss over the training data $\mcL(W)$ as a function of $\tau$.
 
-  Important: When computing the prediction $f(x_i)$ for a point $x_i$
-  in the training set, carefully consider for which points $x'$ you should be including
-  the term $K(x_i,x')$ in the sum.
-
 \item Take the derivative of the loss function with respect to $\tau$.
-\end{enumerate}
 
-\end{problem}
-
-\newpage
-
-\begin{framed}
-\noindent\textbf{Problem 1} (cont.)\\
-
-\begin{enumerate}
-\setcounter{enumi}{2}
 \item Consider the following data set:
 \begin{csv}
   x , y
@@ -137,17 +88,7 @@ should be.
 And the following lengthscales: $\tau=.01$, $\tau=2$, and $\tau=100$.
 
 Write some Python code to compute the loss with respect to each kernel
-for the dataset provided above. Which lengthscale does best?  
-For this problem, you can use our staff \textbf{script to compare your
-  code to a set of staff-written test cases.} This requires, however,
-that you use the structure of the starter code provided in
-\texttt{T1\_P1.py}. More specific instructions can be found at the top
-of the file \texttt{T1\_P1\_Testcases.py}. You may run the test cases
-in the command-line using \texttt{python T1\_P1\_TestCases.py}.
-\textbf{Note that our set of test cases is not comprehensive: just
-  because you pass does not mean your solution is correct! We strongly
-  encourage you to write your own test cases and read more about ours
-  in the comments of the Python script.}
+for the dataset provided above. Which lengthscale does best?
   
 \item Plot the function $(x^*, f(x^*))$ for each of the
   lengthscales above.  You will plot $x^*$ on the x-axis and the
@@ -161,18 +102,42 @@ in the command-line using \texttt{python T1\_P1\_TestCases.py}.
   three cases.  Is what you see consistent with the which lengthscale
   appeared to be numerically best above?  Describe why or why not.
 
-\item Bonus: Code up a gradient descent to optimize the kernel for the
-  data set above.
-  Start your gradient descent from $\tau=2$. Report on what you
-  find.\\\\
+\end{enumerate}
 
-  Note: Gradient descent is discussed in Section 3.4 of the
-  cs181-textbook notes and Section 5.2.4 of Bishop, and will be
-  covered later in the course!
+\end{problem}
+
+\newpage
+
+\begin{enumerate}
+
+\item $$\mcL(W) = \sum_{n=1}^{N} (y_n - f(x_n))^2$$
+  
+  $$ f(x_n) = \sum_{i \not{=} n}^{N} K(x_n,x_i) y_i = \sum_{i \not{=} n}^{N}  \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right) y_i $$
+  
+  $$\mcL(W) = \sum_{n=1}^{N} \left(y_n - \left(\sum_{i \not{=} n}^{N}  \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right) y_i\right)\right)^2$$
+
+
+
+\item $$ \frac{d}{d\tau}\mcL = \sum_{n=1}^{N} \frac{d}{d\tau} \left(y_n - \left(\sum_{i \not{=} n}^{N}  \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right) y_i\right)\right)^2 $$
+
+$$ \frac{d}{d\tau}\mcL = (-2) \sum_{n=1}^{N} \left(y_n - \left(\sum_{i \not{=} n}^{N}  \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right) y_i\right)\right) \frac{d}{d\tau} \left(\sum_{i \not{=} n}^{N}  \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right) y_i\right) $$
+
+$$ \frac{d}{d\tau}\mcL = (-2) \sum_{n=1}^{N} \left(y_n - \left(\sum_{i \not{=} n}^{N}  \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right) y_i\right)\right) \left( y_i \sum_{i \not{=} n}^{N}  \frac{d}{d\tau}\left[ \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right)\right] \right) $$
+
+$$ \frac{d}{d\tau}\mcL = (-2) \sum_{n=1}^{N} \left(y_n - \left(\sum_{i \not{=} n}^{N}  \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right) y_i\right)\right) \left( y_i \sum_{i \not{=} n}^{N}  \frac{||x_n-x_i||^2_2}{\tau^2} \exp\left(\frac{-||x_n-x_i||^2_2}{\tau}\right) \right) $$
+
+\item The best lengthscale of the options $\{0.01, 2, 100\}$ was $\tau = 2$ with a loss of $3.305$.
+  
+\item When the lengthscale is very small (tau=0.001), the kernel function matches the data's y-values exactly for x-coordinates matching the locations of the training data points, but the similarity drops off quickly as you move away along the x-axis, so the kernel function does not approximate them well for other x-values.
+  
+  At an intermediate lengthscale (tau=2), x-values are considered similar to the training data within a couple units of horizontal distance, so e.g. x*=2.5 will be influenced by the points at x=2, x=3, x=4.
+  
+  For long lengthscales (tau=100), the kernel is adding up weighted portions of all the training data, even considering points that are too far away and should not influence the prediction. It ends up predicting values that are much too high and therefore has a large loss across the whole range of x-values.
+  
+  These results are consistent with the output of the code. We can see from the graphs that the kernel at intermediate lengthscale is the one which most closely follows the trajectory of the true y-values, so it makes sense that this one has the lowest total loss.
+
 
 \end{enumerate}
-  
-\end{framed}  
 
 \newpage
 
@@ -191,9 +156,6 @@ nearest-neighbors.  Recall that kNN uses a predictor of the form
 \noindent where $\mathbb{I}$ is an indicator variable. For this problem, you will use the \textbf{same dataset and kernel as in Problem 1}.
 
 
-For this problem, you can use our staff \textbf{script to compare your code to a set of staff-written test cases.} This requires, however, that you use the structure of the starter code provided in \texttt{T1\_P2.py}. More specific instructions can be found at the top of the file \texttt{T1\_P2\_Testcases.py}. You may run the test cases in the command-line using \texttt{python T1\_P2\_TestCases.py}.
-\textbf{Note that our set of test cases is not comprehensive: just because you pass does not mean your solution is correct! We strongly encourage you to write your own test cases and read more about ours in the comments of the Python script.}
-
 \vspace{0.5cm}
 \noindent\emph{Make sure to include all required plots in your PDF.}
 
@@ -204,10 +166,6 @@ For this problem, you can use our staff \textbf{script to compare your code to a
 
 As before, you will plot $x^*$ on the x-axis and the prediction $f(x^*)$ on the y-axis.  For the test inputs $x^*$, you should use an even grid of spacing of $0.1$ between $x^* = 0$ and $x^* = 12$.  (Like in Problem 1, if a test point lies on top of a training input, use the formula without excluding that training input.)
   
-  You may choose to use some starter Python code to create your plots
-  provided in \verb|T1_P2.py|.  Please \textbf{write your own
-    implementation of kNN} for full credit.  Do not use external
-  libraries to find nearest neighbors.
   
 \item Describe what you see: What is the behavior of the functions in
   these three plots?  How does it compare to the behavior of the
@@ -222,6 +180,28 @@ As before, you will plot $x^*$ on the x-axis and the prediction $f(x^*)$ on the 
 
 \end{problem}
 
+\begin{enumerate}
+
+\item
+\includegraphics{k1.png}
+\includegraphics{k3.png}
+\includegraphics{k6.png}
+
+  
+  
+\item k-NN with low k has some similar behavior to kernel-based regression with small lengthscale, while k-NN with high k has some similar behavior to kernel-based regression with large lengthscale.
+  
+  The 1-NN curve fits all the points exactly, as the previous kernel-based regression did when we set $\tau=0.01$. They also share the qualitative feature of jumping around a lot and being strongly influenced by nearby points to the extent that only the nearest training point affects a predicted y-value while all points farther away are disregarded. It has different behavior for interpolation in that x-values between but far from two training points will take on the y-value of one of those training points, unlike kernel-based regression with small lengthscale which predicted y-values of zero at most locations between the training points. The same effect is seen for x-values outside the range of the training data, where 1-NN simply extrapolates using the y-value of the first or last training point for every extreme x-value, whereas the kernel-based regression thinks that these x-values have very little similarity to the training data and therefore predicts a y-value of 0.
+  
+  The 3-NN curve has some similarity to the kernel-based regression with intermediate lengthscale, taking on values that represent some combination of the few nearest points.
+  
+  The 6-NN curve has the flattest slope, like the kernel-based regression with the longest lengthscale. This k-NN regressor basically uses something near the average y-value of most of the dataset and just predicts that value for every x-coordinate (with a small change near the middle of the x-range when the 7th point becomes closer than the 1st point).
+  
+  I do not think there are any values $k$ and $\tau$ such that the k-NN and kernel-based regressor would produce the same results for all x-coordinates. This is because the k-NN regressors extrapolate constant y-values when outside the x-values of the training data, while kernel-based predictions decay as the distance from the training points increases.
+  
+\item The choice of $\tau$ should not matter in the k-NN regressions, because no matter what value it is set to (as long as it is positive), it does not change the relative ordering of closeness kernel values, and we are only concerned with picking the $k$ closest points. Increasing $\tau$ by $1$ would divide all the kernel values by a factor of $e$ but would not change the ratios between them or their relative ranks.
+
+\end{enumerate}
 
 \newpage 
 
@@ -264,6 +244,7 @@ $y$ are scalars, $w$ is also a scalar.
   these empirical moments, how does your expression for the optimal
   $w^*$ in this problem compare with the optimal $w^*$ that we see in
   Section 2.6 of the cs181-textbook?
+  
 
 \item Many common probabilistic linear regression models assume that
   variables x and y are jointly Gaussian.  Did any of your above
@@ -273,6 +254,46 @@ $y$ are scalars, $w$ is also a scalar.
 \end{enumerate}
 
 \end{problem}
+
+\begin{enumerate}
+    \item
+    
+    $$\mcL(w) = E\left[(y_n - \hat{y}_n)^2\right]$$
+    
+    $$\mcL(w) = E\left[y_n^2 - 2y_n\hat{y}_n + \hat{y}_n^2\right]$$
+    
+    $$\mcL(w) = E\left[y_n^2 - 2y_n w x_n + w^2 x_n^2\right]$$
+    
+    $$\mcL(w) = E[y_n^2] - 2 w E[x_n y_n] + w^2 E[x_n^2]$$
+    
+    $$ \frac{d\mcL}{dw} = 0 = -2E[x_n y_n] + 2w E[x_n^2]$$
+    
+    $$ E[x_n y_n] = w E[x_n^2] $$
+    
+    $$ w = E_{xy}[x y] / E_{x}[x^2] $$
+    
+    \item $$E_{x, y}[xy] = \frac{1}{N} \sum_{n=1}^{N} x_n y_n$$
+    $$E_{x}[x^2] = \frac{1}{N} \sum_{n=1}^{N} x_n^2$$
+    
+    \item
+    Substituting the formulas from 3.2 into the result of 3.1 gives the weight estimate:
+  
+  $$ w^* = \frac{E_{xy}[x y]}{E_{x}[x^2]} = \frac{\sum_{n=1}^{N} x_n y_n}{\sum_{n=1}^{N} x_n^2} $$
+  
+  The textbook gives the optimal weights (when $X$ has full column rank) as:
+  
+  $$ w^* = (X^T X)^{-1} X^T y $$
+  
+  which, when the $x$ and $y$ values are scalars, is equivalent to:
+  
+  $$ w^* = \frac{\sum \bold{x}\bold{y}}{\sum \bold{x}^2} $$
+  
+  summed across the list of all the values in $\bold{x}$ and $\bold{y}$. This is the same as the formula obtained by substituting the empirical moments into the result of 3.1.
+  
+  \item The formulas in 3.2 give unbiased estimates if x and y are jointly Gaussian but might produce biased or incorrect estimates for other possible joint distributions. In that sense, the formulas rely on the Gaussian distribution assumption. The derivation in 3.1 did not make any assumptions about the distributions of x and y.
+ 
+ 
+\end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -357,18 +378,45 @@ Given the quality of this fit, do you believe that the number of sunspots contro
 \end{enumerate}
 \end{framed}
 
+\begin{enumerate}
+    \item
+    \includegraphics{41a.png}
+    \includegraphics{41b.png}
+    \includegraphics{41c.png}
+    \includegraphics{41d.png}
+    The total squared errors were:\\
+    a. 394.98\\
+    b. 54.27\\
+    c. 1082.81\\
+    d. 39.00\\
+    \item
+    \includegraphics{42a.png}
+    \includegraphics{42c.png}
+    \includegraphics{42d.png}
+    The total squared errors were:\\
+    a. 351.23\\
+    b. 375.11\\
+    c. $4.9 \times 10^{-22}$\\
+    Basis (d) provides the "best" fit in terms of least loss, but is extremely overfitted and would not generalize. Basis (a) might do better at interpolating for new values, so that is the one I would pick.
+    However, I would not seriously attempt to use any of these bases or regression models to try to predict the number of Republicans in the Senate. Any correlation is probably spurious, and there is probably no relationship between sunspots and election outcomes.
+\end{enumerate}
+
 
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Name and Calibration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Name}
+\subsection*{Name: Robi Rahman}
 
 \subsection*{Collaborators and Resources}
 Whom did you work with, and did you use any resources beyond cs181-textbook and your notes?
 
+I gave some conceptual and programming assistance to Nikola Jurkovic. I did not use any resources besides the cs181-textbook and this PDF, which I read while studying regression using basis functions: http://www.cs.columbia.edu/~jebara/4771/tutorials/regression.pdf
+
 \subsection*{Calibration}
-Approximately how long did this homework take you to complete (in hours)? 
+Approximately how long did this homework take you to complete (in hours)?
+
+20 hours
 
 \end{document}

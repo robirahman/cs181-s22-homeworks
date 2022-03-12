@@ -12,10 +12,6 @@ class GaussianGenerativeModel:
     def __init__(self, is_shared_covariance=False):
         self.is_shared_covariance = is_shared_covariance
 
-    # Just to show how to make 'private' methods
-    def __dummyPrivateMethod(self, input):
-        return None
-
     # TODO: Implement this method!
     def fit(self, X, y):
         return

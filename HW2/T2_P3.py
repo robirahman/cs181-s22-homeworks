@@ -15,8 +15,8 @@ from T2_P3_KNNModel import KNNModel
 # adjust these as you try to find the best fit for each classifier.
 
 # Logistic Regression hyperparameters
-eta = 0.1 # Learning rate
-lam = 0.1 # Lambda for regularization
+eta = 0.1  # Learning rate
+lam = 0.1  # Lambda for regularization
 
 # Whether or not you want the plots to be displayed
 show_charts = True
@@ -42,7 +42,7 @@ def visualize_boundary(model, X, y, title, width=2):
 
     # Get the class predictions
     Y_hat = model.predict(X_pred)
-    Y_hat = Y_hat.reshape((xx.shape[0], xx.shape[1]))
+    Y_hat = np.reshape(Y_hat, (xx.shape[0], xx.shape[1]))
 
     # Visualize them.
     cmap = c.ListedColormap(['r', 'b', 'g'])
@@ -51,8 +51,7 @@ def visualize_boundary(model, X, y, title, width=2):
     plt.xlabel('Magnitude')
     plt.ylabel('Temperature')
     plt.pcolormesh(xx, yy, Y_hat, cmap=cmap, alpha=0.3)
-    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, linewidths=1,
-                edgecolors='black')
+    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, linewidths=1, edgecolors='black')
 
     # Adding a legend and a title
     red = mpatches.Patch(color='red', label='Dwarf')
@@ -79,17 +78,17 @@ X = df[['Magnitude', 'Temperature']].values
 y = np.array([star_labels[x] for x in df['Type']])
 
 # Setting up and evaluating a number of different classification models
-nb1 = GaussianGenerativeModel(is_shared_covariance=False)
-nb1.fit(X, y)
-visualize_boundary(nb1, X, y, 'generative_result_separate_covariances')
-print('Separate Covariance negative log-likelihood: {}\n'
-      .format(nb1.negative_log_likelihood(X, y)))
+# nb1 = GaussianGenerativeModel(is_shared_covariance=False)
+# nb1.fit(X, y)
+# visualize_boundary(nb1, X, y, 'generative_result_separate_covariances')
+# print('Separate Covariance negative log-likelihood: {}\n'
+#       .format(nb1.negative_log_likelihood(X, y)))
 
-nb2 = GaussianGenerativeModel(is_shared_covariance=True)
-nb2.fit(X, y)
-visualize_boundary(nb2, X, y, 'generative_result_shared_covariances')
-print('Shared Covariance negative log-likelihood: {}\n'
-      .format(nb2.negative_log_likelihood(X, y)))
+# nb2 = GaussianGenerativeModel(is_shared_covariance=True)
+# nb2.fit(X, y)
+# visualize_boundary(nb2, X, y, 'generative_result_shared_covariances')
+# print('Shared Covariance negative log-likelihood: {}\n'
+#       .format(nb2.negative_log_likelihood(X, y)))
 
 lr = LogisticRegression(eta=eta, lam=lam)
 lr.fit(X, y)
@@ -111,8 +110,8 @@ visualize_boundary(knn5, X, y, 'knn5_result')
 
 # Setting up some sample data
 X_test = np.array([[6, 2]])
-y_nb1 = nb1.predict(X_test)
-y_nb2 = nb2.predict(X_test)
+# y_nb1 = nb1.predict(X_test)
+# y_nb2 = nb2.predict(X_test)
 y_lr = lr.predict(X_test)
 y_knn1 = knn1.predict(X_test)
 y_knn3 = knn3.predict(X_test)

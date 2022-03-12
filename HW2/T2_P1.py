@@ -16,16 +16,18 @@ from scipy.special import expit as sigmoid
 
 # Note: this is in Python 3
 
+
 def basis1(x):
     return np.stack([np.ones(len(x)), x], axis=1)
 
-# TODO: Implement this
-def basis2(x):
-    return None
 
-# TODO: Implement this
+def basis2(x):
+    return np.stack([np.ones(len(x)), x, x**2], axis=1)
+
+
 def basis3(x):
-    return None
+    return np.stack([np.ones(len(x)), x, x**2, x**3, x**4, x**5], axis=1)
+
 
 class LogisticRegressor:
     def __init__(self, eta, runs):
@@ -33,21 +35,24 @@ class LogisticRegressor:
         self.eta = eta
         self.runs = runs
 
-    # NOTE: Just to show how to make 'private' methods
-    def __dummyPrivateMethod(self, input):
-        return None
+    def gradient(self, x, y):
+        grad = np.matmul(x.T, (self.predict(x) - y))
+        return grad
 
-    # TODO: Optimize w using gradient descent
     def fit(self, x, y, w_init=None):
         # Keep this if case for the autograder
         if w_init is not None:
             self.W = w_init
         else:
             self.W = np.random.rand(x.shape[1], 1)
+        for i in range(self.runs):
+            gradient = self.gradient(x, y)
+            update = eta * gradient / x.shape[0]
+            self.W -= update
 
-    # TODO: Fix this method!
     def predict(self, x):
-        return np.dot(x, self.W)
+        return sigmoid(np.dot(x, self.W))
+
 
 # Function to visualize prediction lines
 # Takes as input last_x, last_y, [list of models], basis function, title
@@ -72,10 +77,10 @@ def visualize_prediction_lines(last_x, last_y, models, basis, title):
     X_pred = np.linspace(-3, 3, 1000)
     X_pred_transformed = basis(X_pred)
 
-    ## Ground truth model
+    # Ground truth model
     plt.plot(X_pred, np.sin(1.2*X_pred) * 0.4 + 0.5, 'g', linewidth=5)
 
-    ## Individual learned logistic regressor models
+    # Individual learned logistic regressor models
     Y_hats = []
     for i in range(len(models)):
         model = models[i]
@@ -103,8 +108,8 @@ def generate_data(dataset_size):
         y.append(y_i)
     return np.array(x), np.array(y).reshape(-1, 1)
 
+
 if __name__ == "__main__":
-    
     # DO NOT CHANGE THE SEED!
     np.random.seed(1738)
     eta = 0.001
@@ -112,14 +117,15 @@ if __name__ == "__main__":
     N = 30
 
     # TODO: Make plot for each basis with all 10 models on each plot
+    bases = [basis1, basis2, basis3]
+    for b in range(3):
+        all_models = []
+        for _ in range(10):
+            x, y = generate_data(N)
+            x_transformed = bases[b](x)
+            model = LogisticRegressor(eta=eta, runs=runs)
+            model.fit(x_transformed, y)
+            all_models.append(model)
+        # Here x and y contain last dataset:
+        visualize_prediction_lines(x, y, all_models, bases[b], f'exampleplot{b+1}')
 
-    # For example:
-    all_models = []
-    for _ in range(10):
-        x, y = generate_data(N)
-        x_transformed = basis1(x)
-        model = LogisticRegressor(eta=eta, runs=runs)
-        model.fit(x_transformed, y)
-        all_models.append(model)
-    # Here x and y contain last dataset:
-    visualize_prediction_lines(x, y, all_models, basis1, "exampleplot")

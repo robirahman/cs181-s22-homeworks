@@ -10,22 +10,25 @@ class KNNModel:
     def __init__(self, k):
         self.X = None
         self.y = None
+        self.n = None
         self.K = k
 
-    # Just to show how to make 'private' methods
-    def __dummyPrivateMethod(self, input):
-        return None
+    def _dist(self, star1: dict, star2: dict):
+        dist = 0
+        dist += (star1[0] - star2[0]) ** 2
+        dist += 9 * (star1[1] - star2[1]) ** 2
+        return dist
 
-    # TODO: Implement this method!
     def predict(self, X_pred):
-        # The code in this method should be removed and replaced! We included it
-        # just so that the distribution code is runnable and produces a
-        # (currently meaningless) visualization.
         preds = []
         for x in X_pred:
-            z = np.cos(x ** 2).sum()
-            preds.append(1 + np.sign(z) * (np.abs(z) > 0.3))
-        return np.array(preds)
+            distances = [None for _ in range(self.n)]
+            for i in range(self.n):
+                distances[i] = (self._dist(x, self.X[i]), self.y[i])
+            distances.sort(key=lambda y: y[0])
+            closest = [_[1] for _ in distances[:self.K]]
+            preds.append(np.bincount(closest).argmax())
+        return preds
 
     # In KNN, "fitting" can be as simple as storing the data, so this has been written for you
     # If you'd like to add some preprocessing here without changing the inputs, feel free,
@@ -33,3 +36,4 @@ class KNNModel:
     def fit(self, X, y):
         self.X = X
         self.y = y
+        self.n = len(X)

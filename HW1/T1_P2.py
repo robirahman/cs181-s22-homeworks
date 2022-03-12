@@ -4,14 +4,14 @@
 # Start Code
 ##################
 
-import math
-import matplotlib.cm as cm
-
-from math import exp
+# import math
+# import matplotlib.cm as cm
+# from math import exp
+# import pandas as pd
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.colors as c
+
+from T1_P1 import kernel
 
 # set up data
 data = [(0., 0.),
@@ -25,6 +25,8 @@ data = [(0., 0.),
 x_train = np.array([d[0] for d in data])
 y_train = np.array([d[1] for d in data])
 
+xy = {x: y for (x, y) in data}
+
 x_test = np.arange(0, 12, .1)
 
 print("y is:")
@@ -32,8 +34,14 @@ print(y_train)
 
 def predict_knn(k=1, tau=1):
     """Returns predictions for the values in x_test, using KNN predictor with the specified k."""
-    # TODO: your code here
-    return np.zeros(len(x_test))
+    predictions = np.zeros(len(x_test))
+    for i in range(len(x_test)):
+        point = x_test[i]
+        distances = {x: kernel(point, x, tau) for x in x_train}
+        k_closest = list(sorted(distances.items(), key=lambda x: x[1], reverse=True))[0:k]
+        k_closest = [x for (x, _kernel) in k_closest]
+        predictions[i] = np.mean([xy[x] for x in k_closest])
+    return predictions
 
 
 def plot_knn_preds(k):
@@ -46,9 +54,13 @@ def plot_knn_preds(k):
     plt.plot(x_test, y_test, label = "predictions using k = " + str(k))
 
     plt.legend()
+    plt.xlabel("input coordinates, x*")
+    plt.ylabel("predicted values, y=kNN(x*)")
     plt.title("KNN Predictions with k = " + str(k))
     plt.savefig('k' + str(k) + '.png')
     plt.show()
 
-for k in (1, 3, len(x_train)-1):
-    plot_knn_preds(k)
+if __name__ == "__main__":
+    for k in (1, 3, len(x_train)-1):
+        plot_knn_preds(k)
+
